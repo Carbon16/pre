@@ -71,12 +71,15 @@ while newMem == True:
         if nUse == "y":
             newMem = True
             Valid1 = True
+            count = count + 1
+            
         if nUse == "n":
             newMem = False
             Valid1 = True
             print("Goodbye")
         else:
             print("Please enter only y or n")
-        
+
+print(member)
     
 
