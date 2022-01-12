@@ -1,3 +1,7 @@
+#Imports
+import json
+from datetime import date
+
 #Declaring
 member = {}
 newMem = True
@@ -10,6 +14,8 @@ vol = 0
 loc = 0
 paid = False
 nUse = False
+today = date.today()
+d1 = today.strftime("%d/%m/%Y")
 
 #Loops while there is a new member to add
 while newMem == True:
@@ -29,7 +35,7 @@ while newMem == True:
     #Stores the name in the nested dictionary
     member[count]["Prename"] = fName
     member[count]["Surname"] = sName
-    ##member[count]["Join Date"] = CURRENT_DATE
+    member[count]["Join Date"] = d1
     #Volunteering
     vol = input("Do you wish to volunteer? (y/n):")
     #Choose location
@@ -48,10 +54,7 @@ while newMem == True:
                 member[count]["Volunteer"] = True
                 member[count]["Location"] = "Painting & Decorating"
                 Valid = True
-            #Validate
-            # else:
-            #     print("Please select an option")
-            #     Valid = False
+
 
     #Validation and paycheck
     while Valid0 == False:
@@ -62,9 +65,6 @@ while newMem == True:
         if paid == "n":
             member[count]["Paid"] = False
             Valid0 = True
-        # else:
-        #     print("Please enter only y or n")
-        #     Valid0 = False
 
     while Valid1 == False:
         nUse = input("Add new member? (y/n):")
@@ -80,6 +80,18 @@ while newMem == True:
         else:
             print("Please enter only y or n")
 
-print(member)
-    
 
+#Exporting/importing the dict as json
+# print(member)
+# print(json.dumps(member))
+
+# f = open("save.json", "w")
+# f.write(json.dumps(member))
+# f.close()
+# with open('save.json') as json_file:
+#     data = json.load(json_file)
+ 
+#     # Print the type of data variable
+#     print(member)
+
+print(member)
