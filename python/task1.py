@@ -19,30 +19,23 @@ while newMem == True:
     Valid0 = False
     Valid1 = False
     #Entering names
-    print("Please enter your first name:")
-    input(fName)
-    print("Please enter your surname:")
-    input(sName)
+    fName = input("Please enter your first name:")
+    sName = input("Please enter your surname:")
     # Validate
     while len(str(fName)) == 0 or len(str(sName)) == 0:
-        print("Please enter your name")
-        print("Please enter your first name:")
-        input(fName)
-        print("Please enter your surname:")
-        input(sName)
-    
+        print("Please enter your name.")
+        fName = input("Please enter your first name:")
+        sName = input("Please enter your surname:")
     #Stores the name in the nested dictionary
     member[count]["Prename"] = fName
     member[count]["Surname"] = sName
     ##member[count]["Join Date"] = CURRENT_DATE
     #Volunteering
-    print(" you wish to volunteer? (y/n):")
-    input(vol)
+    vol = input("Do you wish to volunteer? (y/n):")
     #Choose location
     if vol == "y": 
         while Valid == False :
-            print("Where do you want to volunteer? \n1. Shop\n2. Gate\n3. Painting & Decorating")
-            input(loc)
+            loc = int(input("Where do you want to volunteer? \n1. Shop\n2. Gate\n3. Painting & Decorating\nSelect:"))
             if loc == 1:
                 member[count]["Volunteer"] = True
                 member[count]["Location"] = "Shop"
@@ -56,27 +49,25 @@ while newMem == True:
                 member[count]["Location"] = "Painting & Decorating"
                 Valid = True
             #Validate
-            else:
-                print("Please select an option")
-                Valid = False
+            # else:
+            #     print("Please select an option")
+            #     Valid = False
 
     #Validation and paycheck
     while Valid0 == False:
-        print("Has user paid the fee? (y/n)")
-        input(paid)
+        paid = input("Has user paid the fee? (y/n)")
         if paid == "y": 
             member[count]["Paid"] = True
             Valid0 = True
         if paid == "n":
             member[count]["Paid"] = False
             Valid0 = True
-        else:
-            print("Please enter only y or n")
-            Valid0 = False
+        # else:
+        #     print("Please enter only y or n")
+        #     Valid0 = False
 
     while Valid1 == False:
-        print("Add new member? (y/n):")
-        input(nUse)
+        nUse = input("Add new member? (y/n):")
         if nUse == "y":
             newMem = True
             Valid1 = True
