@@ -1,0 +1,95 @@
+//Declaring
+member <-- {}
+newMem <-- True
+fName <-- 0
+count <-- 0
+Valid <-- False
+Valid0 <-- False
+
+//Loops while there is a new member to add
+WHILE newMem True DO
+    //Local init
+    Valid <-- False
+    Valid0 <-- False
+    Valid1 <-- False
+    //Entering names
+    OUTPUT "Please enter your first name:"
+    INPUT fName
+    OUTPUT "Please enter your surname:"
+    INPUT sName
+    // Validate
+    WHILE len(fName) = 0 OR len(sName) = 0 DO
+        OUTPUT "Please enter your name"
+        OUTPUT "Please enter your first name:"
+        INPUT fName
+        OUTPUT "Please enter your surname:"
+        INPUT sName
+    ENDWHILE
+    //Stores the name in the nested dictionary
+    member[count]["Prename"] <-- fName
+    member[count]["Surname"] <-- sName
+    member[count]["Join Date"] <-- CURRENT_DATE()
+    //Voulenteering
+    OUTPUT "Do you wish to voulenteer? (y/n):"
+    INPUT vol
+    //Choose location
+    IF vol = "y" DO
+        WHILE Valid = False DO
+            OUTPUT "Where do you want to voulenteer? \n1. Shop\n2. Gate\n3. Painting & Decorating"
+            INPUT loc
+            IF loc = 1 DO
+                member[count]["Voulunteer"] <-- True
+                member[count]["Location"] <-- "Shop"
+                Valid <-- True
+            ENDIF
+            IF loc = 2 DO
+                member[count]["Voulunteer"] <-- True
+                member[count]["Location"] <-- "Gate"
+                Valid <-- True
+            ENDIF
+            IF loc = 3 DO
+                member[count]["Voulunteer"] <-- True
+                member[count]["Location"] <-- "Painting & Decorating"
+                Valid <-- True
+            ENDIF
+            //Validate
+            ELSE 
+                OUTPUT "Please select an option"
+                Valid <-- False
+            ENDIF
+        ENDWHILE
+    ENDIF
+    //Validation and paycheck
+    WHILE Valid0 = False DO
+        OUTPUT "Has user paid the fee? (y/n)"
+        INPUT paid
+        IF paid = "y" DO
+            member[count]["Paid"] <-- True
+            Valid0 <-- True
+        ENDIF
+        IF paid = "n" DO
+            member[count]["Paid"] <-- False
+            Valid0 <-- True
+        ENDIF
+        ELSE 
+            OUTPUT "Please enter only y or n"
+            Valid0 <-- False
+        ENDIF
+    ENDWHILE
+    WHILE Valid1 = False DO
+        OUTPUT "Add new member? (y/n):"
+        INPUT nUse
+        IF nUse = "y" DO
+            newMem <-- True
+            Valid1 <-- True
+        ENDIF
+        IF nUse = "n" DO
+            newMem <-- False
+            Valid1 <-- True
+            OUTPUT "Goodbye"
+        ENDIF
+        ELSE 
+            OUTPUT "Please enter only y or n"
+        ENDIF
+    ENDWHILE
+ENDWHILE
