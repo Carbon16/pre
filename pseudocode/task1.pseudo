@@ -10,7 +10,7 @@ Valid0 <-- False
 WHILE newMem True DO
     //Local init
     Valid <-- False
-    Valid0 <-- False
+    Valid0 <-- False+ 
     Valid1 <-- False
     //Entering names
     OUTPUT "Please enter your first name:"

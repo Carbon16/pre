@@ -19,7 +19,7 @@ d1 = today.strftime("%d/%m/%Y")
 
 #Loops while there is a new member to add
 while newMem == True:
-    member[count] = {}
+    member["A" + str(count)] = {}
     #Local init
     Valid = False
     Valid0 = False
@@ -94,4 +94,4 @@ while newMem == True:
 #     # Print the type of data variable
 #     print(member)
 
-print(member)
+# print(member)

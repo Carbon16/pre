@@ -94,4 +94,4 @@ while newMem == True:
 #     # Print the type of data variable
 #     print(member)
 
-print(member)
+#print(member)
