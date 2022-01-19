@@ -6,7 +6,7 @@ from datetime import date
 member = {}
 newMem = True
 fName = 0
-count = 0
+count = 1
 Valid = False
 Valid0 = False
 sName = 0
@@ -33,9 +33,9 @@ while newMem == True:
         fName = input("Please enter your first name:")
         sName = input("Please enter your surname:")
     #Stores the name in the nested dictionary
-    member[count]["Prename"] = fName
-    member[count]["Surname"] = sName
-    member[count]["Join Date"] = d1
+    member["A" + str(count)]["Prename"] = fName
+    member["A" + str(count)]["Surname"] = sName
+    member["A" + str(count)]["Join Date"] = d1
     #Volunteering
     vol = input("Do you wish to volunteer? (y/n):")
     #Choose location
@@ -43,16 +43,16 @@ while newMem == True:
         while Valid == False :
             loc = int(input("Where do you want to volunteer? \n1. Shop\n2. Gate\n3. Painting & Decorating\nSelect:"))
             if loc == 1:
-                member[count]["Volunteer"] = True
-                member[count]["Location"] = "Shop"
+                member["A" + str(count)]["Volunteer"] = True
+                member["A" + str(count)]["Location"] = "Shop"
                 Valid = True
             if loc == 2:
-                member[count]["Volunteer"] = True
-                member[count]["Location"] = "Gate"
+                member["A" + str(count)]["Volunteer"] = True
+                member["A" + str(count)]["Location"] = "Gate"
                 Valid = True
             if loc == 3:
-                member[count]["Volunteer"] = True
-                member[count]["Location"] = "Painting & Decorating"
+                member["A" + str(count)]["Volunteer"] = True
+                member["A" + str(count)]["Location"] = "Painting & Decorating"
                 Valid = True
 
 
@@ -60,10 +60,10 @@ while newMem == True:
     while Valid0 == False:
         paid = input("Has user paid the fee? (y/n)")
         if paid == "y": 
-            member[count]["Paid"] = True
+            member["A" + str(count)]["Paid"] = True
             Valid0 = True
         if paid == "n":
-            member[count]["Paid"] = False
+            member["A" + str(count)]["Paid"] = False
             Valid0 = True
 
     while Valid1 == False:
@@ -82,16 +82,9 @@ while newMem == True:
 
 
 #Exporting/importing the dict as json
-# print(member)
-# print(json.dumps(member))
 
-# f = open("save.json", "w")
-# f.write(json.dumps(member))
-# f.close()
-# with open('save.json') as json_file:
-#     data = json.load(json_file)
- 
-#     # Print the type of data variable
-#     print(member)
-
-# print(member)
+f = open("save.json", "w")
+f.write(json.dumps(member))
+f.close()
+with open('save.json') as json_file:
+    data = json.load(json_file)
