@@ -2,10 +2,11 @@
 import json
 from datetime import date
 from pickle import FALSE
+from re import I
 
 #Declaring
 member = {}
-newMem = False
+newMem = True
 fName = 0
 count = 1
 Valid = False
@@ -19,9 +20,12 @@ today = date.today()
 d1 = today.strftime("%d/%m/%Y")
 get = True
 go = True
+k = []
+v = []
 
-with open('save.json') as json_file:
-    member = json.load(json_file)
+
+# with open('save.json') as json_file:
+#     member = json.load(json_file)
 
 while go == True:
     # menu = input('1. Add new member\n2. Get a member\n3. EXIT\nSELECT: ')
@@ -71,7 +75,6 @@ while go == True:
                     member["A" + str(count)]["Location"] = "Painting & Decorating"
                     Valid = True
 
-
         #Validation and paycheck
         while Valid0 == False:
             paid = input("Has user paid the fee? (y/n)")
@@ -98,15 +101,36 @@ while go == True:
 
     #Exporting/importing the dict as json
 
-    f = open("save.json", "w")
-    f.write(json.dumps(member))
-    f.close()
+    # f = open("save.json", "w")
+    # f.write(json.dumps(member))
+    # f.close()
 
     while get == True:
-        k = list(member["A" + str(count)].keys())
-        v = list(member["A" + str(count)].values())
-        print(k)
-        print(v)
-        get = False
-        p = v.index(True) # value from dictionaruy
-        print("Get a key by value:",k[p])
+        while Valid == False :
+                getMen = int(input("What do you want to search? \n1. Voulenteers\n2. Expired\n3. Not paid\nSelect:"))
+                if getMen == 1:
+                    getVol = int(input("What do you want to search? \n1. Gate\n2. Shop\n3. Painting\n4. All\nSelect:"))
+                    if getVol == 1:
+                        for i in range(1,count + 1):
+                            if member["A" + str(i)]["Location"] == "Gate":
+                                print(str(member["A" + str(i)]["Surname"]) + str(member["A" + str(i)]["Prename"]))
+                    if getVol == 2:
+                        for i in range(1,count + 1):
+                            if member["A" + str(i)]["Location"] == "Shop":
+                                print(str(member["A" + str(i)]["Surname"]) + str(member["A" + str(i)]["Prename"]))
+                    if getVol == 3:
+                        for i in range(1,count + 1):
+                            if member["A" + str(i)]["Location"] == "Painting & Decorating":
+                                print(str(member["A" + str(i)]["Surname"]) + str(member["A" + str(i)]["Prename"]))
+                    if getVol == 4:
+                        for i in range(1,count + 1):
+                            if member["A" + str(i)]["Volunteer"] == True:
+                                print(str(member["A" + str(i)]["Surname"]) + str(member["A" + str(i)]["Prename"]))
+                if getMen == 2:
+                    for i in range(1,count + 1):
+                            if member["A" + str(i)]["Volunteer"] == True:
+                                print(str(member["A" + str(i)]["Surname"]) + str(member["A" + str(i)]["Prename"]))
+                if getMen == 3:
+                    for i in range(1,count + 1):
+                            if member["A" + str(i)]["Paid"] == False:
+                                print(str(member["A" + str(i)]["Surname"]) + str(member["A" + str(i)]["Prename"]))
