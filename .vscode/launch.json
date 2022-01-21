@@ -6,7 +6,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "pythonPath": "${config:python.defaultInterpreterPath}"
+            "python": "${config:python.defaultInterpreterPath}"
         }
     ]
 }
