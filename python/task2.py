@@ -112,12 +112,15 @@ while go == True:
                     getVol = int(input("What do you want to search? \n1. Gate\n2. Shop\n3. Painting\n4. All\nSelect:"))
                     if getVol == 1:
                         for i in range(1,count + 1):
-                            if member["A" + str(i)]["Location"] == "Gate":
-                                print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                            try:
+                                if member["A" + str(i)]["Location"] == "Gate":
+                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                            except KeyError:
+                                print("**End**")
                     if getVol == 2:
                         for i in range(1,count + 1):
                             if member["A" + str(i)]["Location"] == "Shop":
-                                print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                                print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"])
                     if getVol == 3:
                         for i in range(1,count + 1):
                             if member["A" + str(i)]["Location"] == "Painting & Decorating":
