@@ -3,6 +3,7 @@ import json
 from datetime import date
 from pickle import FALSE
 from re import I
+import os
 
 #Declaring
 member = {}
@@ -117,6 +118,8 @@ while go == True:
                                     print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                             except KeyError:
                                 print("**End**")
+                            finally:
+                                os.system('clear')
                     if getVol == 2:
                         try:
                             for i in range(1,count + 1):
