@@ -34,22 +34,38 @@ Data is temporarily stored in dictionary value, then exported and saved as json
 
 Vars:
 
-newMem : var : bool ; Used to control loops | alternatively can be string (y/n)              
+newMem : var : bool ; Used to control loops | alternatively can be string (y/n)
+
 Member : dict (nested) : mixed type
+
 newMem : var : bool
+
 fName : var : str
+
 count : var : int
+
 Valid : var : bool 
+
 Valid0 : var : bool 
+
 sName : var : str
+
 vol : var : bool : volunteer menu
+
 loc  : var : int : volunteer location menu
+
 paid : var : bool
+
 nUse : var : bool : NEW USER 
+
 today : var : str : date imported from datetime
+
 d1 : var : str : date imported from datetime
+
 get : var : bool
+
 go : var : bool : main while loop
+
 
 
 Functions:
