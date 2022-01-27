@@ -24,7 +24,6 @@ go = True
 k = []
 v = []
 
-
 # with open('save.json') as json_file:
 #     member = json.load(json_file)
 
