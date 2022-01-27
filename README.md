@@ -1,3 +1,5 @@
+[![Run](https://github.com/Carbon1769/pre/actions/workflows/pylint.yml/badge.svg)](https://github.com/Carbon1769/pre/actions/workflows/pylint.yml)
+
 # pre
 
 This is the repo for the iGCSE pre release. 
