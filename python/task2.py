@@ -3,6 +3,7 @@ import json
 from datetime import date
 from pickle import FALSE
 from re import I
+import os
 
 #Declaring
 member = {}
@@ -117,23 +118,41 @@ while go == True:
                                     print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                             except KeyError:
                                 print("**End**")
+                            finally:
+                                os.system('clear')
                     if getVol == 2:
-                        for i in range(1,count + 1):
-                            if member["A" + str(i)]["Location"] == "Shop":
-                                print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                        try:
+                            for i in range(1,count + 1):
+                                if member["A" + str(i)]["Location"] == "Shop":
+                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                        except KeyError:
+                                print("**End**")
                     if getVol == 3:
-                        for i in range(1,count + 1):
-                            if member["A" + str(i)]["Location"] == "Painting & Decorating":
-                                print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                        try:
+                            for i in range(1,count + 1):
+                                if member["A" + str(i)]["Location"] == "Painting & Decorating":
+                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                        except KeyError:
+                                print("**End**")
                     if getVol == 4:
-                        for i in range(1,count + 1):
-                            if member["A" + str(i)]["Volunteer"] == True:
-                                print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                        try:
+                            for i in range(1,count + 1):
+                                if member["A" + str(i)]["Volunteer"] == True:
+                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                        except KeyError:
+                            print("**End**")
+                            
                 if getMen == 2:
-                    for i in range(1,count + 1):
-                            if member["A" + str(i)]["Volunteer"] == True:
-                                print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                    try:
+                        for i in range(1,count + 1):
+                                if member["A" + str(i)]["Volunteer"] == True:
+                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                    except KeyError:
+                        print("**End**")
                 if getMen == 3:
-                    for i in range(1,count + 1):
-                            if member["A" + str(i)]["Paid"] == False:
-                                print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                    try:
+                        for i in range(1,count + 1):
+                                if member["A" + str(i)]["Paid"] == False:
+                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                    except KeyError:
+                        print("**End**")
