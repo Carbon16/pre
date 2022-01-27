@@ -115,7 +115,7 @@ while go == True:
                         for i in range(1,count + 1):
                             try:
                                 if member["A" + str(i)]["Location"] == "Gate":
-                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                             except KeyError:
                                 print("**End**")
                             finally:
@@ -124,21 +124,21 @@ while go == True:
                         try:
                             for i in range(1,count + 1):
                                 if member["A" + str(i)]["Location"] == "Shop":
-                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                         except KeyError:
                                 print("**End**")
                     if getVol == 3:
                         try:
                             for i in range(1,count + 1):
                                 if member["A" + str(i)]["Location"] == "Painting & Decorating":
-                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                         except KeyError:
                                 print("**End**")
                     if getVol == 4:
                         try:
                             for i in range(1,count + 1):
                                 if member["A" + str(i)]["Volunteer"] == True:
-                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                         except KeyError:
                             print("**End**")
                             
@@ -146,13 +146,13 @@ while go == True:
                     try:
                         for i in range(1,count + 1):
                                 if member["A" + str(i)]["Volunteer"] == True:
-                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                     except KeyError:
                         print("**End**")
                 if getMen == 3:
                     try:
                         for i in range(1,count + 1):
                                 if member["A" + str(i)]["Paid"] == False:
-                                    print(str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                     except KeyError:
                         print("**End**")
