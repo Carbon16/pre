@@ -6,7 +6,8 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "python": "${config:python.defaultInterpreterPath}"
+            "justMyCode": true,
+            "python": "N:\\Computer Science\\cmd\\python.exe"
         }
     ]
 }

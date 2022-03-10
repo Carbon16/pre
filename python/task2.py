@@ -1,9 +1,14 @@
 #Imports
 import json
+#from colorama import Fore, Back, Style
 from datetime import date
 from pickle import FALSE
 from re import I
 import os
+
+#print(Back.GREEN + 'and with a green background')
+#print(Style.DIM + 'and in dim text')
+#print(Style.RESET_ALL)
 
 #Declaring
 member = {}
@@ -24,20 +29,8 @@ go = True
 k = []
 v = []
 
-# with open('save.json') as json_file:
-#     member = json.load(json_file)
-
-while go == True:
-    # menu = input('1. Add new member\n2. Get a member\n3. EXIT\nSELECT: ')
-    # if menu == 1:
-    #     newMem = True
-    # if menu == 2:
-    #     get = True
-    # if menu == 3:
-    #     go = False
-    #     print("Goodbye!")
-
-    #Loops while there is a new member to add
+def add(count):
+    newMem = True
     while newMem == True:
         member["A" + str(count)] = {}
         #Local init
@@ -98,13 +91,15 @@ while go == True:
                 print("Goodbye")
             else:
                 print("Please enter only y or n")
+    return member
 
-    #Exporting/importing the dict as json
-
-    # f = open("save.json", "w")
-    # f.write(json.dumps(member))
-    # f.close()
-
+def get():
+    #Local init
+    get = True
+    Valid = False
+    Valid0 = False
+    Valid1 = False
+    #Begin Loop
     while get == True:
         while Valid == False :
                 getMen = int(input("What do you want to search? \n1. Voulenteers\n2. Expired\n3. Not paid\nSelect:"))
@@ -155,3 +150,16 @@ while go == True:
                                     print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                     except KeyError:
                         print("**End**")
+                if getMen == 4:
+                    #Need to add not paid etc...
+
+
+while go == True:
+    menu = int(input('1. Add new member\n2. Get a member\n3. EXIT\nSELECT: '))
+    if menu == 1:
+        add(count)
+    if menu == 2:
+        get()
+    if menu == 3:
+        go = False
+        print("Goodbye!")
