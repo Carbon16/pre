@@ -1,14 +1,10 @@
 #Imports
 import json
-#from colorama import Fore, Back, Style
+from datetime import timedelta
 from datetime import date
 from pickle import FALSE
 from re import I
 import os
-
-#print(Back.GREEN + 'and with a green background')
-#print(Style.DIM + 'and in dim text')
-#print(Style.RESET_ALL)
 
 #Declaring
 member = {}
@@ -23,7 +19,9 @@ loc = 0
 paid = False
 nUse = False
 today = date.today()
-d1 = today.strftime("%d/%m/%Y")
+d1 = today.strftime("%d/%m")
+y1 = int(today.strftime("%y"))
+y2 = y1 + 1
 get = True
 go = True
 k = []
@@ -48,7 +46,8 @@ def add(count):
         #Stores the name in the nested dictionary
         member["A" + str(count)]["Prename"] = fName
         member["A" + str(count)]["Surname"] = sName
-        member["A" + str(count)]["Join Date"] = d1
+        member["A" + str(count)]["Date"] = d1
+        member["A" + str(count)]["Expiry"] = y2
         #Volunteering
         vol = input("Do you wish to volunteer? (y/n):")
         #Choose location
@@ -70,7 +69,7 @@ def add(count):
 
         #Validation and paycheck
         while Valid0 == False:
-            paid = input("Has user paid the fee? (y/n)")
+            paid = input("Has user paid the fee? (y/n):")
             if paid == "y": 
                 member["A" + str(count)]["Paid"] = True
                 Valid0 = True
@@ -84,16 +83,19 @@ def add(count):
                 newMem = True
                 Valid1 = True
                 count = count + 1
+                return count
                 
             if nUse == "n":
                 newMem = False
+                count = count + 1
                 Valid1 = True
                 print("Goodbye")
+                return count
             else:
                 print("Please enter only y or n")
     return member
 
-def get():
+def get(member):
     #Local init
     get = True
     Valid = False
@@ -106,7 +108,7 @@ def get():
                 if getMen == 1:
                     getVol = int(input("What do you want to search? \n1. Gate\n2. Shop\n3. Painting\n4. All\nSelect:"))
                     if getVol == 1:
-                        for i in range(1,count + 1):
+                        for i in range(1,int(count+5)):
                             try:
                                 if member["A" + str(i)]["Location"] == "Gate":
                                     print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
@@ -116,21 +118,21 @@ def get():
                                 os.system('clear')
                     if getVol == 2:
                         try:
-                            for i in range(1,count + 1):
+                            for i in range(1,int(count+5)):
                                 if member["A" + str(i)]["Location"] == "Shop":
                                     print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                         except KeyError:
                                 print("**End**")
                     if getVol == 3:
                         try:
-                            for i in range(1,count + 1):
+                            for i in range(1,int(count+5)):
                                 if member["A" + str(i)]["Location"] == "Painting & Decorating":
                                     print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                         except KeyError:
                                 print("**End**")
                     if getVol == 4:
                         try:
-                            for i in range(1,count + 1):
+                            for i in range(1,int(count+5)):
                                 if member["A" + str(i)]["Volunteer"] == True:
                                     print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                         except KeyError:
@@ -138,20 +140,19 @@ def get():
                             
                 if getMen == 2:
                     try:
-                        for i in range(1,count + 1):
-                                if member["A" + str(i)]["Volunteer"] == True:
+                        for i in range(1,int(count+5)):
+                                if member["A" + str(i)]["Date"] > d1 and member["A" + str(i)]["Expiry"] > y1:
                                     print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                     except KeyError:
                         print("**End**")
                 if getMen == 3:
                     try:
-                        for i in range(1,count + 1):
-                                if member["A" + str(i)]["Paid"] == False:
-                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                        for i in range(1,int(count+5)):
+                            print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                            if member["A" + str(i)]["Paid"] == False:
+                                print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                     except KeyError:
                         print("**End**")
-                if getMen == 4:
-                    #Need to add not paid etc...
 
 
 while go == True:
@@ -159,7 +160,7 @@ while go == True:
     if menu == 1:
         add(count)
     if menu == 2:
-        get()
+        get(member)
     if menu == 3:
         go = False
         print("Goodbye!")
