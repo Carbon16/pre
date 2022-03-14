@@ -20,7 +20,7 @@ paid <-- False
 nUse <-- False
 today <-- date.today()
 d1 <-- today.strftime("%d/%m")
-y1 <-- int(today.strftime("%y"))
+y1 <-- today.strftime("%y")
 y2 <-- y1 + 1
 get <-- True
 go <-- True
@@ -30,72 +30,79 @@ v <-- []
 def add(count):
     newMem <-- True
     WHILE  newMem = Tru D DO:
-        member["A" + str(count)] <-- {}
+        member["A" + count] <-- {}
         //Local init
         Valid <-- False
         Valid0 <-- False
         Valid1 <-- False
         //Entering names
-        fName <-- input("Please enter your first name:")
-        sName <-- input("Please enter your surname:")
+        fName <-- INPUT "Please enter your first name:"
+        sName <-- INPUT "Please enter your surname:"
         // Validate
-        WHILE   len(str(fName)) = 0 or len(str(sName)) =  D DO:
-            print("Please enter your name.")
-            fName <-- input("Please enter your first name:")
-            sName <-- input("Please enter your surname:")
+        WHILE   len(fName)) = 0 or len(sName =  D DO:
+            OUTPUT Please enter your name.
+            fName <-- INPUT "Please enter your first name:"
+            sName <-- INPUT "Please enter your surname:"
         //Stores the name in the nested dictionary
-        member["A" + str(count)]["Prename"] <-- fName
-        member["A" + str(count)]["Surname"] <-- sName
-        member["A" + str(count)]["Date"] <-- d1
-        member["A" + str(count)]["Expiry"] <-- y2
+        member["A" + count]["Prename"] <-- fName
+        member["A" + count]["Surname"] <-- sName
+        member["A" + count]["Date"] <-- d1
+        member["A" + count]["Expiry"] <-- y2
         //Volunteering
-        vol <-- input("Do you wish to volunteer? (y/n):")
+        vol <-- INPUT "Do you wish to volunteer? (y/n):"
         //Choose location
         IF  vol = "y" DO: DO
             WHILE  Valid = False DO:
-                loc <-- int(input("Where do you want to volunteer? \n1. Shop\n2. Gate\n3. Painting & Decorating\nSelect:"))
+                loc <-- INPUT "Where do you want to volunteer? \n1. Shop\n2. Gate\n3. Painting & Decorating\nSelect:"
                 IF  loc = 1 DO:
-                    member["A" + str(count)]["Volunteer"] <-- True
-                    member["A" + str(count)]["Location"] <-- "Shop"
+                    member["A" + count]["Volunteer"] <-- True
+                    member["A" + count]["Location"] <-- "Shop"
                     Valid <-- True
+                ENDIF
                 IF loc = 2 DO:
-                    member["A" + str(count)]["Volunteer"] <-- True
-                    member["A" + str(count)]["Location"] <-- "Gate"
+                    member["A" + count]["Volunteer"] <-- True
+                    member["A" + count]["Location"] <-- "Gate"
                     Valid <-- True
+                ENDIF
                 IF loc = 3 DO:
-                    member["A" + str(count)]["Volunteer"] <-- True
-                    member["A" + str(count)]["Location"] <-- "Painting & Decorating"
+                    member["A" + count]["Volunteer"] <-- True
+                    member["A" + count]["Location"] <-- "Painting & Decorating"
                     Valid <-- True
+                ENDIF
 
         //Validation and paycheck
         WHILE  Valid0 = Fals DO:
-            paid <-- input("Has user paid the fee? (y/n):")
+            paid <-- INPUT "Has user paid the fee? (y/n):"
             IF paid = "y" DO: 
-                member["A" + str(count)]["Paid"] <-- True
+                member["A" + count]["Paid"] <-- True
                 Valid0 <-- True
+            ENDIF
             IF paid = "n" DO:
-                member["A" + str(count)]["Paid"] <-- False
+                member["A" + count]["Paid"] <-- False
                 Valid0 <-- True
+            ENDIF
 
         WHILE  Valid1 = Fals DO:
-            nUse <-- input("Add new member? (y/n):")
+            nUse <-- INPUT "Add new member? (y/n):"
             IF nUse = "y" DO:
                 newMem <-- True
                 Valid1 <-- True
                 count <-- count + 1
                 return count
-                
+            ENDIF
             IF nUse = "n" DO:
                 newMem <-- False
                 count <-- count + 1
                 Valid1 <-- True
-                print("Goodbye")
+                OUTPUT "Goodbye"
                 return count
+            ENDIF
             else:
-                print("Please enter only y or n")
-    return member
+                OUTPUT "Please enter only y or n"
+        ENDWHILE
+    RETURN member
 
-def get(member):
+FUNCTION get(member):
     //Local init
     get <-- True
     Valid <-- False
@@ -104,63 +111,69 @@ def get(member):
     //Begin Loop
     WHILE  get = Tru DO:
         WHILE  Valid = False DO:
-                getMen <-- int(input("What do you want to search? \n1. Voulenteers\n2. Expired\n3. Not paid\nSelect:"))
+                getMen <-- INPUT "What do you want to search? \n1. Voulenteers\n2. Expired\n3. Not paid\nSelect:"
                 IF getMen = 1 DO:
-                    getVol <-- int(input("What do you want to search? \n1. Gate\n2. Shop\n3. Painting\n4. All\nSelect:"))
+                    getVol <-- INPUT "What do you want to search? \n1. Gate\n2. Shop\n3. Painting\n4. All\nSelect:"
                     IF getVol = 1 DO:
-                        for i in range(1,int(count+5)):
+                        for i in range(1,count+5):
                             try:
-                                IF member["A" + str(i)]["Location"] = "Gate" DO:
-                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                                IF member["A" + i]["Location"] = "Gate" DO:
+                                    OUTPUT Name: + member[A + i]["Surname"]) + ,  + member[A + i][Prename]
                             except KeyError:
-                                print("**End**")
+                                OUTPUT "**End**"
                             finally:
                                 os.system('clear')
                     IF getVol = 2 DO:
                         try:
-                            for i in range(1,int(count+5)):
-                                IF member["A" + str(i)]["Location"] = "Shop" DO:
-                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                            for i in range(1,count+5):
+                                IF member["A" + i]["Location"] = "Shop" DO:
+                                    OUTPUT "Name: " + member["A" + i]["Surname"]) + ", " + member["A" + i]["Prename"]
                         except KeyError:
-                                print("**End**")
+                                OUTPUT "**End**"
                     IF getVol = 3 DO:
                         try:
-                            for i in range(1,int(count+5)):
-                                IF member["A" + str(i)]["Location"] = "Painting & Decorating" DO:
-                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                            for i in range(1,count+5):
+                                IF member["A" + i]["Location"] = "Painting & Decorating" DO:
+                                    OUTPUT "Name: " + member["A" + i]["Surname"]) + ", " + member["A" + i]["Prename"]
                         except KeyError:
-                                print("**End**")
+                                OUTPUT "**End**"
                     IF getVol = 4 DO:
                         try:
-                            for i in range(1,int(count+5)):
-                                IF member["A" + str(i)]["Volunteer"] = True DO:
-                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                            for i in range(1,count+5):
+                                IF member["A" + i]["Volunteer"] = True DO:
+                                    OUTPUT "Name: " + member["A" + i]["Surname"]) + ", " + member["A" + i]["Prename"]
                         except KeyError:
-                            print("**End**")
+                            OUTPUT "**End**"
                             
                 IF getMen = 2 DO:
                     try:
-                        for i in range(1,int(count+5)):
-                                IF member["A" + str(i)]["Date"] > d1 and member["A" + str(i)]["Expiry"] > y1 DO:
-                                    print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                        for i in range(1,count+5):
+                                IF member["A" + i]["Date"] > d1 and member["A" + i]["Expiry"] > y1 DO:
+                                    OUTPUT "Name: " + member["A" + i]["Surname"]) + ", " + member["A" + i]["Prename"]
                     except KeyError:
-                        print("**End**")
+                        OUTPUT "**End**"
                 IF getMen = 3 DO:
                     try:
-                        for i in range(1,int(count+5)):
-                            print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
-                            IF member["A" + str(i)]["Paid"] = False DO:
-                                print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
+                        for i in range(1,count+5):
+                            OUTPUT "Name: " + member["A" + i]["Surname"]) + ", " + member["A" + i]["Prename"]
+                            IF member["A" + i]["Paid"] = False DO:
+                                OUTPUT "Name: " + member["A" + i]["Surname"]) + ", " + member["A" + i]["Prename"]
+                            ENDIF
                     except KeyError:
-                        print("**End**")
-
+                        OUTPUT "**End**"
+                ENDIF
+ENDFUNC
 
 WHILE  go = Tru DO:
-    menu <-- int(input('1. Add new member\n2. Get a member\n3. EXIT\nSELECT: '))
+    menu <-- INPUT '1. Add new member\n2. Get a member\n3. EXIT\nSELECT: '
     IF menu = 1 DO:
         add(count)
+    ENDIF
     IF menu = 2 DO:
         get(member)
+    ENDIF
     IF menu = 3 DO:
         go <-- False
-        print("Goodbye!")
+        OUTPUT "Goodbye!"
+    ENDIF
+ENDWHILE
