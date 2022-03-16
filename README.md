@@ -108,6 +108,14 @@ The data will be passed to the functions from parameters
 -------------
 ## Task 3
 
+This is task 3. It's pretty short and simple, with validation. 
+- [x] Separate data structures should be used to store the names of the individuals and the short messages
+they would like to have written on their brass plaque. 
+- [x] An output would display everything that was input for the sponsor to confirm
+- [x] If errors are found, the program should allow data to be re-entered
+- [x] Once complete, the data is stored and the sponsor is charged $200.
+
+
 `````
 def spon(spons):
     #Local init
