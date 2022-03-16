@@ -115,8 +115,6 @@ def get(member):
                                     print("Name: " + str(member["A" + str(i)]["Surname"]) + ", " + str(member["A" + str(i)]["Prename"]))
                             except KeyError:
                                 print("**End**")
-                            finally:
-                                os.system('clear')
                     if getVol == 2:
                         try:
                             for i in range(1,int(count+5)):
@@ -155,27 +153,45 @@ def get(member):
                     except KeyError:
                         print("**End**")
 
-def spon(spons, c0):
+def spon(spons):
     #Local init
     spon = True
     Valid = False
-    Valid0 = False
-    Valid1 = False
+    global c0
     #Begin Loop
     while spon == True:
-        spons
+        while Valid == False:
+            print("PLEASE BE AWARE THAT THIS SPONSORSHIP WILL COST $200")
+            nom = input("Please enter your name:")
+            msg = input("Please enter the message you would like:")
+            print("PLEASE CONFIRM THE FOLLOWING DETAILS ARE CORRECT")
+            print("Name:" + nom + " | Message:" + msg)
+            yn = str(input("Please confirm (y/n):"))
+            if yn == "y":
+                spons.update({c0: [str(nom), str(msg)]}) 
+                print("Sponsorship sucess!")
+                spon = False
+                Valid = True
+                c0 = c0 + 1
+            if yn == "n":
+                print("Please try again")
+                Valid = False
+    return spons
+
         
 
 
 
 while go == True:
-    menu = int(input('1. Add new member\n2. Get a member\n3. Sponsor\n4. EXIT\nSELECT: '))
+    menu = int(input('1. Add new member\n2. Get a member\n3. Sponsor\n4. Display sponsors\n5. EXIT\nSELECT: '))
     if menu == 1:
         add(count)
     if menu == 2:
         get(member)
     if menu == 3:
-        spon(spons, c0)
+        spon(spons)
     if menu == 4:
+        print(spons)
+    if menu == 5:
         go = False
         print("Goodbye!")
