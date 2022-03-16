@@ -105,3 +105,33 @@ Ask for y/n
 
 The data will be passed to the functions from parameters
 
+-------------
+## Task 3
+
+`````
+def spon(spons):
+    #Local init
+    spon = True
+    Valid = False
+    global c0
+    #Begin Loop
+    while spon == True:
+        while Valid == False:
+            print("PLEASE BE AWARE THAT THIS SPONSORSHIP WILL COST $200")
+            nom = input("Please enter your name:")
+            msg = input("Please enter the message you would like:")
+            print("PLEASE CONFIRM THE FOLLOWING DETAILS ARE CORRECT")
+            print("Name:" + nom + " | Message:" + msg)
+            yn = str(input("Please confirm (y/n):"))
+            if yn == "y":
+                spons.update({c0: [str(nom), str(msg)]}) 
+                print("Sponsorship sucess!")
+                spon = False
+                Valid = True
+                c0 = c0 + 1
+            if yn == "n":
+                print("Please try again")
+                Valid = False
+    return spons
+`````
+
