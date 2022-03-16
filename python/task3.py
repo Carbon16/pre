@@ -178,9 +178,6 @@ def spon(spons):
                 Valid = False
     return spons
 
-        
-
-
 
 while go == True:
     menu = int(input('1. Add new member\n2. Get a member\n3. Sponsor\n4. Display sponsors\n5. EXIT\nSELECT: '))
