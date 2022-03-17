@@ -2,7 +2,7 @@
 
 
 #Imports
-import json
+#import json
 from datetime import date
 from pickle import FALSE
 from re import I
@@ -26,7 +26,6 @@ today = date.today()
 d1 = today.strftime("%d/%m")
 y1 = int(today.strftime("%y"))
 y2 = y1 + 1
-get = True
 go = True
 k = []
 v = []

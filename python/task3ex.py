@@ -2,11 +2,8 @@
 
 
 #Imports
-import json
+#import json
 from datetime import date
-from pickle import FALSE
-from re import I
-import os
 
 #Declaring
 member = {}
@@ -26,7 +23,6 @@ today = date.today()
 d1 = today.strftime("%d/%m")
 y1 = int(today.strftime("%y"))
 y2 = y1 + 1
-get = True
 go = True
 dosh = 0
 k = []
@@ -56,7 +52,7 @@ def add(count):
         #Volunteering
         vol = input("Do you wish to volunteer? (y/n):")
         #Choose location
-        if vol == "y": 
+        if vol == "y":
             while Valid == False :
                 loc = int(input("Where do you want to volunteer? \n1. Shop\n2. Gate\n3. Painting & Decorating\nSelect:"))
                 if loc == 1:
@@ -75,7 +71,7 @@ def add(count):
         #Validation and paycheck
         while Valid0 == False:
             paid = input("Has user paid the fee? (y/n):")
-            if paid == "y": 
+            if paid == "y":
                 member["A" + str(count)]["Paid"] = True
                 Valid0 = True
             if paid == "n":
@@ -89,7 +85,7 @@ def add(count):
                 Valid1 = True
                 count = count + 1
                 return count
-                
+
             if nUse == "n":
                 newMem = False
                 count = count + 1
@@ -104,48 +100,46 @@ def get(member):
     #Local init
     get = True
     Valid = False
-    Valid0 = False
-    Valid1 = False
     #Begin Loop
     while get == True:
         while Valid == False :
-                getMen = int(input("What do you want to search? \n1. Voulenteers\n2. Expired\n3. Not paid\nSelect:"))
-                if getMen == 1:
-                    getVol = int(input("What do you want to search? \n1. Gate\n2. Shop\n3. Painting\n4. All\nSelect:"))
-                    if getVol == 1:
-                        for i in member:
-                            try:
-                                if member[i]["Location"] == "Gate":
-                                    print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
-                            except KeyError:
-                                print("**End**")
-                    if getVol == 2:
+            getMen = int(input("What do you want to search? \n1. Voulenteers\n2. Expired\n3. Not paid\nSelect:"))
+            if getMen == 1:
+                getVol = int(input("What do you want to search? \n1. Gate\n2. Shop\n3. Painting\n4. All\nSelect:"))
+                if getVol == 1:
+                    for i in member:
                         try:
-                            for i in member:
-                                if member[i]["Location"] == "Shop":
-                                    print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
-                        except KeyError:
-                                print("**End**")
-                    if getVol == 3:
-                        try:
-                            for i in member:
-                                if member[i]["Location"] == "Painting & Decorating":
-                                    print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
-                        except KeyError:
-                                print("**End**")
-                    if getVol == 4:
-                        try:
-                            for i in member:
-                                if member[i]["Volunteer"] == True:
-                                    print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
+                            if member[i]["Location"] == "Gate":
+                                print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
                         except KeyError:
                             print("**End**")
-                            
+                if getVol == 2:
+                    try:
+                        for i in member:
+                            if member[i]["Location"] == "Shop":
+                                print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
+                    except KeyError:
+                        print("**End**")
+                if getVol == 3:
+                    try:
+                        for i in member:
+                            if member[i]["Location"] == "Painting & Decorating":
+                                print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
+                    except KeyError:
+                        print("**End**")
+                if getVol == 4:
+                    try:
+                        for i in member:
+                            if member[i]["Volunteer"] == True:
+                                print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
+                    except KeyError:
+                        print("**End**")
+
                 if getMen == 2:
                     try:
                         for i in member:
-                                if member[i]["Date"] > d1 and member[i]["Expiry"] > y1:
-                                    print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
+                            if member[i]["Date"] > d1 and member[i]["Expiry"] > y1:
+                                print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
                     except KeyError:
                         print("**End**")
                 if getMen == 3:
