@@ -27,7 +27,7 @@ go <-- True
 k <-- []
 v <-- []
 
-def add(count):
+FUNCTION add(count):
     newMem <-- True
     WHILE  newMem = Tru D DO:
         member["A" + count] <-- {}
@@ -162,7 +162,7 @@ FUNCTION get(member):
                     except KeyError:
                         OUTPUT "**End**"
                 ENDIF
-ENDFUNC
+ENDFUN
 
 WHILE  go = Tru DO:
     menu <-- INPUT '1. Add new member\n2. Get a member\n3. EXIT\nSELECT: '

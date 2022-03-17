@@ -28,6 +28,7 @@ y1 = int(today.strftime("%y"))
 y2 = y1 + 1
 get = True
 go = True
+dosh = 0
 k = []
 v = []
 
@@ -160,6 +161,7 @@ def spon(spons):
     spon = True
     Valid = False
     global c0
+    global dosh
     #Begin Loop
     while spon == True:
         while Valid == False:
@@ -170,7 +172,8 @@ def spon(spons):
             print("Name:" + nom + " | Message:" + msg)
             yn = str(input("Please confirm (y/n):"))
             if yn == "y":
-                spons.update({c0: [str(nom), str(msg)]}) 
+                spons.update({c0: [str(nom), str(msg)]})
+                dosh = dosh + 200
                 print("Sponsorship sucess!")
                 spon = False
                 Valid = True
@@ -182,7 +185,7 @@ def spon(spons):
 
 
 while go == True:
-    menu = int(input('1. Add new member\n2. Get a member\n3. Sponsor\n4. Display sponsors\n5. EXIT\nSELECT: '))
+    menu = int(input('1. Add new member\n2. Get a member\n3. Sponsor\n4. Display sponsors & money raised\n5. EXIT\nSELECT: '))
     if menu == 1:
         add(count)
     if menu == 2:
@@ -191,6 +194,7 @@ while go == True:
         spon(spons)
     if menu == 4:
         print(spons)
+        print("Money raised: $" + str(dosh))
     if menu == 5:
         go = False
         print("Goodbye!")
