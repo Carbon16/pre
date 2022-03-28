@@ -6,7 +6,12 @@
 from datetime import date
 from pickle import FALSE
 from re import I
-import os
+import json as jason
+
+#Import members from save.json file
+with open('save.json', 'r') as f:
+    member = jason.load(f)
+
 
 #Declaring
 member = {}
@@ -86,11 +91,14 @@ def add(count):
                 newMem = True
                 Valid1 = True
                 count = count + 1
-                return count
-                
+
             if nUse == "n":
                 newMem = False
+                Valid1 = True
                 count = count + 1
+                #export member to json
+                with open('save.json', 'w') as f:
+                    jason.dump(member, f)
                 Valid1 = True
                 print("Goodbye")
                 return count
@@ -189,7 +197,9 @@ while go == True:
     if menu == 3:
         spon(spons)
     if menu == 4:
-        print(spons)
+        #print spons
+        for i in spons:
+            print("Name: " + str(spons[i][0]) + ", msg: " + str(spons[i][1]))
     if menu == 5:
         go = False
         print("Goodbye!")
