@@ -6,12 +6,7 @@
 from datetime import date
 from pickle import FALSE
 from re import I
-import json as jason
-
-#Import members from save.json file
-with open('save.json', 'r') as f:
-    member = jason.load(f)
-
+import webbrowser
 
 #Declaring
 member = {}
@@ -96,10 +91,6 @@ def add(count):
                 newMem = False
                 Valid1 = True
                 count = count + 1
-                #export member to json
-                with open('save.json', 'w') as f:
-                    jason.dump(member, f)
-                Valid1 = True
                 print("Goodbye")
                 return count
             else:
@@ -124,28 +115,28 @@ def get(member):
                                 if member[i]["Location"] == "Gate":
                                     print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
                             except KeyError:
-                                print("**End**")
+                                print("")
                     if getVol == 2:
                         try:
                             for i in member:
                                 if member[i]["Location"] == "Shop":
                                     print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
                         except KeyError:
-                                print("**End**")
+                                print("")
                     if getVol == 3:
                         try:
                             for i in member:
                                 if member[i]["Location"] == "Painting & Decorating":
                                     print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
                         except KeyError:
-                                print("**End**")
+                                print("")
                     if getVol == 4:
                         try:
                             for i in member:
                                 if member[i]["Volunteer"] == True:
                                     print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
                         except KeyError:
-                            print("**End**")
+                            print("")
                             
                 if getMen == 2:
                     try:
@@ -153,14 +144,14 @@ def get(member):
                                 if member[i]["Date"] > d1 and member[i]["Expiry"] > y1:
                                     print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
                     except KeyError:
-                        print("**End**")
+                        print("")
                 if getMen == 3:
                     try:
                         for i in member:
                             if member[i]["Paid"] == False:
                                 print("Name: " + str(member[i]["Surname"]) + ", " + str(member[i]["Prename"]))
                     except KeyError:
-                        print("**End**")
+                        print("")
 
 def spon(spons):
     #Local init
@@ -187,7 +178,11 @@ def spon(spons):
                 Valid = False
     return spons
 
+#launch a website
+def openSite():
+    webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
+openSite()
 while go == True:
     menu = int(input('1. Add new member\n2. Get a member\n3. Sponsor\n4. Display sponsors\n5. EXIT\nSELECT: '))
     if menu == 1:
@@ -203,3 +198,7 @@ while go == True:
     if menu == 5:
         go = False
         print("Goodbye!")
+    if menu == 6:
+        openSite()
+
+
